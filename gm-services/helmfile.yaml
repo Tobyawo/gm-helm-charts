@@ -15,3 +15,31 @@ releases:
     chart: ./charts/user-service-postgres
     values:
       - ./charts/user-service-postgres/values.yaml
+  - name: ingress
+    chart: ./charts/ingress
+    values:
+      - ./charts/ingress/values.yaml
+  - name: kafka
+    chart: ./charts/kafka
+    values:
+      - ./charts/kafka/values.yaml
+  - name: notification-service
+    chart: ./charts/notification-service
+    values:
+      - ./charts/notification-service/values.yaml
+  - name: zipkin
+    chart: ./charts/zipkin
+    values:
+      - ./charts/zipkin/values.yaml
+  - name: prometheus
+    chart: ./charts/prometheus
+    values:
+      - ./charts/prometheus/values.yaml
+  - name: jenkins
+    chart: ./charts/jenkins
+    values:
+      - ./charts/jenkins/values.yaml
+  - name: grafana
+    chart: ./charts/grafana
+    values:
+      - ./charts/grafana/values.yaml

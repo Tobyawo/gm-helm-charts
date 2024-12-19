@@ -32,3 +32,8 @@ The .tgz packaged charts are primarily for:
 Reproducibility: Distributing a static version of your chart.
 Storage in Chart Repositories: Uploading to a chart repository like Helm Hub or an internal registry.
 If you're working in a local environment or with a GitOps-style repository, unarchived charts are sufficient.
+
+
+--To add new service
+create a chart for the service, add its details to the helmfile
+cd into gm-services and run:  helmfile apply

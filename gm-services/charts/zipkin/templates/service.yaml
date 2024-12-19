@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-zipkin
+spec:
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 9411
+  selector:
+    app: zipkin

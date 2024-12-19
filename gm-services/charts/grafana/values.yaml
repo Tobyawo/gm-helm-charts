@@ -1,0 +1,20 @@
+replicaCount: 1
+
+image:
+  repository: grafana/grafana
+  tag: latest
+
+service:
+  name: grafana
+  type: ClusterIP
+  port: 3000
+
+resources: {}
+
+admin:
+  user: admin
+  password: admin
+
+datasources:
+  prometheus:
+    url: http://prometheus:9090

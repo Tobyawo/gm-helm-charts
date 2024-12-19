@@ -1,0 +1,16 @@
+replicaCount: 1
+
+image:
+  repository: jenkins/jenkins
+  tag: lts
+
+service:
+  name: jenkins
+  type: ClusterIP
+  port: 8080
+
+resources: {}
+
+persistence:
+  enabled: true
+  size: 10Gi

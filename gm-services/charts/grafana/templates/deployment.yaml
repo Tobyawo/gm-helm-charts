@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-grafana
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 3000
+          env:
+            - name: GF_SECURITY_ADMIN_USER
+              value: {{ .Values.admin.user }}
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              value: {{ .Values.admin.password }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/grafana
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Release.Name }}-grafana-config

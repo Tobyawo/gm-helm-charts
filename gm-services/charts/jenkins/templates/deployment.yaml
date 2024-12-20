@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-jenkins
+  name: jenkins
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -20,7 +20,13 @@ spec:
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home
+            - name: docker-socket
+              mountPath: /var/run/docker.sock # Mount the Docker socket
       volumes:
         - name: jenkins-home
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}-jenkins-pvc
+        - name: docker-socket
+          hostPath:
+            path: /var/run/docker.sock # Docker socket path on the host
+            type: File

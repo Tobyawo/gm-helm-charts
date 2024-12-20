@@ -5,8 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: gm-api.local
-      http:
+    - http:
         paths:
           - path: /gm-access/api/
             pathType: Prefix
@@ -29,10 +28,17 @@ spec:
                 name: config-server
                 port:
                   number: 8888
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jenkins
+                port:
+                  number: 8080
 
 
 
-#  kubectl apply -f ingress-gm-api.yaml
+  #  kubectl apply -f ingress-gm-api.yaml
 #  To set up NGINX Ingress Controller as an API Gateway for your Kubernetes services
 #  You can install the NGINX Ingress Controller using the Minikube addon or via Helm.
 #1. minikube addons enable ingress
@@ -48,3 +54,11 @@ spec:
 #  as the NGINX Ingress Controller will handle routing.
 
 #  kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 8080:80
+
+
+ # 1. Hostname in the URL
+#If your Ingress configuration uses a specific hostname (e.g., example.com), you can add it directly to the URL in Postman: https://example.com/api/resource
+ # Hostname in the Host Header
+#If DNS resolution is not configured, you can pass the hostname using the Host header in Postman:
+  #Add the IP address of your Ingress controller in the URL: https://<INGRESS_CONTROLLER_IP>/api/resource
+  #In the Headers section of Postman, add a key-value pair: Key: Host , Value: example.com

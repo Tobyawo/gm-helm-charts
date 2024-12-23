@@ -2,3 +2,23 @@ To be able to use /sonar as the context-root
 run the command line code below to create a configmap that will be loaded on the container
 
  kubectl create configmap sonar-properties --from-file=sonar.properties
+
+
+
+2. Integrate SonarQube with Jenkins
+a. Install SonarQube Plugin in Jenkins
+Go to Jenkins Dashboard > Manage Jenkins > Plugins > Available.
+Search for SonarQube Scanner and install it.
+Restart Jenkins if prompted.
+b. Configure SonarQube in Jenkins
+Navigate to Manage Jenkins > Configure System.
+Under SonarQube servers, click Add SonarQube:
+Name: SonarQube
+Server URL: http://<MINIKUBE_IP>:32000
+Add credentials for SonarQube (generate a token from SonarQube UI under My Account > Security > Tokens).
+Save the configuration.
+c. Configure Sonar Scanner in Jenkins
+Go to Manage Jenkins > Global Tool Configuration.
+Under SonarQube Scanner, click Add SonarQube Scanner:
+Name: SonarScanner
+Install automatically.

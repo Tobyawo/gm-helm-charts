@@ -43,3 +43,7 @@ releases:
     chart: ./charts/grafana
     values:
       - ./charts/grafana/values.yaml
+  - name: sonar-qube
+    chart: ./charts/sonar-qube
+    values:
+      - ./charts/sonar-qube/values.yaml

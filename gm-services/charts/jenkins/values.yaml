@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: jenkins/jenkins
-  tag: lts
+  repository: tobyawo/jenkins-with-docker
+  tag: latest
 
 service:
   name: jenkins

@@ -29,10 +29,18 @@ spec:
           env:
             - name: SONAR_ES_BOOTSTRAP_CHECKS_DISABLE
               value: "true"
+            - name: sonar.web.context
+              value: "/sonar"
           volumeMounts:
             - mountPath: /opt/sonarqube/data
               name: sonarqube-data
+            - mountPath: /opt/sonarqube/conf/sonar.properties
+              name: sonar-properties-volume
+              subPath: sonar.properties
       volumes:
         - name: sonarqube-data
           persistentVolumeClaim:
             claimName: sonarqube-pvc
+        - name: sonar-properties-volume
+          configMap:
+            name: sonar-properties

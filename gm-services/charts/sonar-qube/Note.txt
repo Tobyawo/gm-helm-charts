@@ -1,0 +1,4 @@
+To be able to use /sonar as the context-root
+run the command line code below to create a configmap that will be loaded on the container
+
+ kubectl create configmap sonar-properties --from-file=sonar.properties

@@ -1,0 +1,14 @@
+To resolve permission denied while trying to connect to the Docker daemon socket at
+unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/create?fromImage=alpine&tag=3.14":
+dial unix /var/run/docker.sock: connect: permission denied
+
+minikube ssh
+ls -l /var/run/docker.sock
+sudo -i
+chmod 666 /var/run/docker.sock
+
+
+Add User to the Docker Group
+Instead of changing permissions, a better practice is to ensure that the docker user is part of the docker group:
+
+usermod -aG docker docker
